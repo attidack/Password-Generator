@@ -1,18 +1,5 @@
 // Assignment code here
-function passwordLegnthOption(){
-  const passwordLength = prompt('Please enter a password length (between 8 and 128)');
-  if (passwordLength <= 7){
-    window.alert('Not matched, the number was '+passwordLength +', please enter a number between 8 and 128');
-    return passwordLegnthOption();
-  }if (passwordLength >= 129){
-    window.alert('Not matched, the number was '+passwordLength +', please enter a number between 8 and 128');
-    return passwordLegnthOption();
-  }
-  else{
-    console.log(passwordLength)
-    return passwordLength;
-    }
-}
+// defining chars throuh codechar into arrays
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
@@ -30,9 +17,11 @@ function arrayFromLowToHigh(low, high){
   }
   return array
 }
+// Main function
 function generatePassword() {
-  let charCodes = LOWERCASE_CHAR_CODES
-  let selected = "Lowercase Characters"
+  let charCodes = LOWERCASE_CHAR_CODES // Default case is lower case
+  let selected = "Lowercase Characters" // Option tracking
+  // Password Prompt
   function passwordLegnthOption(){
     const passwordLength = prompt('Please enter a password length (between 8 and 128)');
     if (passwordLength <= 7){
@@ -47,6 +36,7 @@ function generatePassword() {
       return passwordLength;
       }
   }
+  // Character type selection prompts
   function includeUPPERCASEoption (){
     var includeUPPERCASE = prompt('Type 1 for Yes and 2 for No, Would you like to include UPPERCASE in your password?');
     includeUPPERCASE = parseInt(includeUPPERCASE);
@@ -66,7 +56,6 @@ function generatePassword() {
       }
   
   }
-
   function includeSymbolsoption (){
     var includeSymbols = prompt('Type 1 for Yes and 2 for No, Would you like to include Symbols in your password?');
     includeSymbols = parseInt(includeSymbols);
@@ -105,8 +94,10 @@ function generatePassword() {
       }
   
   }
+  // prompt calls
   var passwordLength = passwordLegnthOption();
   includeUPPERCASEoption()
+  // Password logic
   const passwordCharacters = []
   for (let i = 0; i < passwordLength; i++) {
     const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
