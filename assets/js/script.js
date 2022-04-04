@@ -1,18 +1,13 @@
 // Assignment code here
-function passwordLegnthOption(){
-  const passwordLength = prompt('Please enter a password length (between 8 and 128)');
-  if (passwordLength <= 7){
-    window.alert('Not matched, the number was '+passwordLength +', please enter a number between 8 and 128');
-    return passwordLegnthOption();
-  }if (passwordLength >= 129){
-    window.alert('Not matched, the number was '+passwordLength +', please enter a number between 8 and 128');
-    return passwordLegnthOption();
+// array to collect char codes
+function arrayFromLowToHigh(low, high){
+  const array = []
+  for (let i = low; i <=high; i++){
+    array.push(i)
   }
-  else{
-    console.log(passwordLength)
-    return passwordLength;
-    }
+  return array
 }
+// char code lookup arrays
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
@@ -23,16 +18,11 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 ).concat(
   arrayFromLowToHigh(123, 126)
 )
-function arrayFromLowToHigh(low, high){
-  const array = []
-  for (let i = low; i <=high; i++){
-    array.push(i)
-  }
-  return array
-}
+// main generate pasword function
 function generatePassword() {
-  let charCodes = null
-  let selected = ""
+  let charCodes = null // start of charcode string
+  let selected = "" // start of window prompt memory string
+  // Password legnth prompts and logic
   function passwordLegnthOption(){
     const passwordLength = prompt('Please enter a password length (between 8 and 128)');
     if (passwordLength <= 7){
@@ -47,6 +37,7 @@ function generatePassword() {
       return passwordLength;
       }
   }
+  // Start of char code options, this one is for lower case
   function includeLowercaseOption (){
     var includeLowercase = prompt('Type 1 for Yes and 2 for No, Would you like to include lowercase Characters in your password?');
     includeLowercase = parseInt(includeLowercase);
@@ -66,6 +57,7 @@ function generatePassword() {
       }
   
   }
+  // uppercase char code options
   function includeUPPERCASEoption (){
     var includeUPPERCASE = prompt('Type 1 for Yes and 2 for No, Would you like to include UPPERCASE in your password?');
     includeUPPERCASE = parseInt(includeUPPERCASE);
@@ -85,7 +77,7 @@ function generatePassword() {
       }
   
   }
-
+  // Symbol chars option prompts
   function includeSymbolsoption (){
     var includeSymbols = prompt('Type 1 for Yes and 2 for No, Would you like to include Symbols in your password?');
     includeSymbols = parseInt(includeSymbols);
@@ -105,6 +97,7 @@ function generatePassword() {
       }
   
   }
+  // Numbers option prompts
   function includeNumbersOption (){
     var includeNumbers = prompt('Type 1 for Yes and 2 for No, Would you like to include Numbers in your password?');
     includeNumbers = parseInt(includeNumbers);
@@ -129,6 +122,7 @@ function generatePassword() {
     
       
   }
+  // password gen logic
   var passwordLength = passwordLegnthOption();
   includeLowercaseOption()
   const passwordCharacters = []
