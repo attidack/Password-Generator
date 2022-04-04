@@ -31,8 +31,8 @@ function arrayFromLowToHigh(low, high){
   return array
 }
 function generatePassword() {
-  let charCodes = LOWERCASE_CHAR_CODES
-  let selected = "Lowercase Characters"
+  let charCodes = null
+  let selected = ""
   function passwordLegnthOption(){
     const passwordLength = prompt('Please enter a password length (between 8 and 128)');
     if (passwordLength <= 7){
@@ -46,6 +46,25 @@ function generatePassword() {
       console.log(passwordLength)
       return passwordLength;
       }
+  }
+  function includeLowercaseOption (){
+    var includeLowercase = prompt('Type 1 for Yes and 2 for No, Would you like to include lowercase Characters in your password?');
+    includeLowercase = parseInt(includeLowercase);
+      switch (includeLowercase) {
+          case 1:
+              charCodes = LOWERCASE_CHAR_CODES;
+              selected = selected.concat('Lowercase Characters')
+              includeUPPERCASEoption();
+              break;
+          case 2:
+              includeUPPERCASEoption();
+              break;
+          default:
+              window.alert("You did not pick a valid option. Try again.");
+              includeLowercaseOption();
+          break;
+      }
+  
   }
   function includeUPPERCASEoption (){
     var includeUPPERCASE = prompt('Type 1 for Yes and 2 for No, Would you like to include UPPERCASE in your password?');
@@ -96,17 +115,22 @@ function generatePassword() {
               window.alert("Your new password will be " +passwordLength +" characters long.  Made up of "  +selected );
               break;
           case 2:
+            if (charCodes === null){
+              window.alert("you have not selected any options for your password");
+              return includeLowercaseOption();
+            }else{
             window.alert("Your new password will be " +passwordLength +" characters long.  Made up of "  +selected );
-              break;
+              break;}
           default:
             window.alert("You did not pick a valid option. Try again.");
               includeNumbersOption();
           break;
       }
-  
+    
+      
   }
   var passwordLength = passwordLegnthOption();
-  includeUPPERCASEoption()
+  includeLowercaseOption()
   const passwordCharacters = []
   for (let i = 0; i < passwordLength; i++) {
     const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
