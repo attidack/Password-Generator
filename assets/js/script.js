@@ -13,9 +13,6 @@ function passwordLegnthOption(){
     return passwordLength;
     }
 }
-
-
-
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
@@ -26,8 +23,6 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 ).concat(
   arrayFromLowToHigh(123, 126)
 )
-
-
 function arrayFromLowToHigh(low, high){
   const array = []
   for (let i = low; i <=high; i++){
@@ -35,8 +30,6 @@ function arrayFromLowToHigh(low, high){
   }
   return array
 }
-
-
 function generatePassword() {
   let charCodes = LOWERCASE_CHAR_CODES
   let selected = "Lowercase Characters"
@@ -114,7 +107,6 @@ function generatePassword() {
   }
   var passwordLength = passwordLegnthOption();
   includeUPPERCASEoption()
-
   const passwordCharacters = []
   for (let i = 0; i < passwordLength; i++) {
     const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
