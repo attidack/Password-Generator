@@ -39,6 +39,7 @@ function arrayFromLowToHigh(low, high){
 
 function generatePassword() {
   let charCodes = LOWERCASE_CHAR_CODES
+  let selected = "Lowercase Characters"
   function passwordLegnthOption(){
     const passwordLength = prompt('Please enter a password length (between 8 and 128)');
     if (passwordLength <= 7){
@@ -59,6 +60,7 @@ function generatePassword() {
       switch (includeUPPERCASE) {
           case 1:
               charCodes = charCodes.concat(UPPERCASE_CHAR_CODES);
+              selected = selected.concat(', Uppercase Characters')
               includeSymbolsoption();
               break;
           case 2:
@@ -78,6 +80,7 @@ function generatePassword() {
       switch (includeSymbols) {
           case 1:
               charCodes = charCodes.concat(SYMBOL_CHAR_CODES);
+              selected = selected.concat(', Symbol Characters')
               includeNumbersOption();
               break;
           case 2:
@@ -96,11 +99,14 @@ function generatePassword() {
       switch (includeNumbers) {
           case 1:
               charCodes = charCodes.concat(NUMBER_CHAR_CODES);
+              selected = selected.concat(', and Numbers')
+              window.alert("Your new password will be " +passwordLength +" characters long.  Made up of "  +selected );
               break;
           case 2:
+            window.alert("Your new password will be " +passwordLength +" characters long.  Made up of "  +selected );
               break;
           default:
-              window.alert("You did not pick a valid option. Try again.");
+            window.alert("You did not pick a valid option. Try again.");
               includeNumbersOption();
           break;
       }
