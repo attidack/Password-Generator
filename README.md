@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a Random Password genorator that relies on your input.
+This is a Random Password Generator that relies on your input.
 
 Features:
 - Password Length
