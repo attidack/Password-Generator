@@ -1,5 +1,13 @@
 // Assignment code here
-// defining chars throuh codechar into arrays
+// array to hold char types
+function arrayFromLowToHigh(low, high){
+  const array = []
+  for (let i = low; i <=high; i++){
+    array.push(i)
+  }
+  return array
+}
+// defining chars through codeChar into arrays
 const UPPERCASE_CHAR_CODES = arrayFromLowToHigh(65, 90)
 const LOWERCASE_CHAR_CODES = arrayFromLowToHigh(97, 122)
 const NUMBER_CHAR_CODES = arrayFromLowToHigh(48, 57)
@@ -10,13 +18,7 @@ const SYMBOL_CHAR_CODES = arrayFromLowToHigh(33, 47).concat(
 ).concat(
   arrayFromLowToHigh(123, 126)
 )
-function arrayFromLowToHigh(low, high){
-  const array = []
-  for (let i = low; i <=high; i++){
-    array.push(i)
-  }
-  return array
-}
+
 // Main function
 function generatePassword() {
   let charCodes = LOWERCASE_CHAR_CODES // Default case is lower case
